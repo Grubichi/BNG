@@ -1,4 +1,11 @@
-  
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
 
 body {
     margin: 0;
@@ -70,6 +77,8 @@ body {
     transition: transform 0.3s ease; /* Płynne przesuwanie ikony */
     border-radius: 3px;
     filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    display: inline-block;
+    transform-origin: 50% 50%;
   }
   /* Animacja połyskującego efektu holo */
 main a{
@@ -88,7 +97,12 @@ main a{
 main a:hover{
   color: #036703;
 }
+.rectangle .icon:hover{
+  filter: drop-shadow(10px 10px 10px linear-gradient(to right, orange , yellow, green, cyan, blue, violet));
+  
 
+
+}
   /* Menu */
   .menu {
     position: absolute;
@@ -140,12 +154,13 @@ main a:hover{
 
   /* Styl tła poza menu */
   .background {
-    position: fixed;
+
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: -1;
+
   }
 
   /* Overlay widoczny, gdy menu jest otwarte */
@@ -201,19 +216,18 @@ main a:hover{
 }
 
 .background {
-    position: absolute;
-    width: 100%;
-    height: infinite;
-    top: 0;
-    left: 0;
-    background: #1f152e;
-    overflow: hidden;
-    z-index: -1;
+  position: fixed;
+  width: 100%;
+  height: 120%;
+  top: 0;
+  left: 0;
+  background-color: #1f152e;
+
 }
 
 .background span {
     width: 9vmin;
-    height: 9vmin;
+    height: 7vmin;
     border-radius: 9vmin;
     backface-visibility: hidden;
     position: absolute;
@@ -476,6 +490,7 @@ footer {
   left: 0; 
   z-index: 10;
   text-align-last: center;
+  opacity: 0.5;
   
 }
 .card {

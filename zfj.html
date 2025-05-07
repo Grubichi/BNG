@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Baza Niepełnosprawnych Graczy</title>
+  <title>BNG</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/x-icon" href="gorilla-svgrepo-com.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,7 +80,21 @@
 </div>
 </div>
 <main>
-  <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe deleniti perferendis pariatur est quis accusamus at velit excepturi itaque unde fugiat, cupiditate et error explicabo, eaque corrupti vero consectetur officiis!</div>
+  <div class="grid">
+    <?php
+      $dir = "images";
+      $images = glob($dir . "/*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+      foreach($images as $image) {
+          echo "<img src='$image' alt='obrazek'>";
+      }
+    ?>
+  </div>
+  
+  <div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modal-img">
+  </div>
+
 </main>
 </body>
 <footer>
@@ -120,4 +134,21 @@
     menu.addEventListener('click', function(event) {
       event.stopPropagation();
     });
+</script>
+  
+<script>
+  const images = document.querySelectorAll('.grid img');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+    });
+  });
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
 </script>
